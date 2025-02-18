@@ -19,7 +19,7 @@ import java.util.List;
 import static org.apache.logging.log4j.util.Strings.repeat;
 
 @SpringBootApplication
-public class ExplorecaliJpaApplication implements CommandLineRunner {
+public class ExplorecaliJpaApplication {
 	private final String TOUR_IMPORT_FILE = "ExploreCalifornia.json";
 
 	@Autowired
@@ -32,16 +32,16 @@ public class ExplorecaliJpaApplication implements CommandLineRunner {
 		SpringApplication.run(ExplorecaliJpaApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		createTourAllPackages();
-		System.out.println("Persisted Packages = " + tourPackageService.total());
-		createToursFromFile(TOUR_IMPORT_FILE);
-		System.out.println("Persisted Tours = " + tourService.total());
-		System.out.println(repeat("*", 50));
-		//	System.out.println(tourService.lookupByDifficulty(Difficulty.Medium));
-		tourService.lookupByDifficulty(Difficulty.Medium).forEach(tour -> System.out.println("/n"+ tour.getTitle()));
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		createTourAllPackages();
+//		System.out.println("Persisted Packages = " + tourPackageService.total());
+//		createToursFromFile(TOUR_IMPORT_FILE);
+//		System.out.println("Persisted Tours = " + tourService.total());
+//		System.out.println(repeat("*", 50));
+//		//	System.out.println(tourService.lookupByDifficulty(Difficulty.Medium));
+//		tourService.lookupByDifficulty(Difficulty.Medium).forEach(tour -> System.out.println("/n"+ tour.getTitle()));
+//	}
 
 	private void createTourAllPackages() {
 		tourPackageService.createTourPackage("BC", "Backpack Cal");
